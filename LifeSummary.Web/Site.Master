@@ -1,0 +1,94 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="LifeSummary.SiteMaster" %>
+<%@ Register Src="~/Layout/Sidebar.ascx" TagPrefix="Destek" TagName="Sidebar" %>
+<%@ Register Src="~/Layout/Navbar.ascx" TagPrefix="Destek" TagName="Navbar" %>
+<%@ Register Src="~/Layout/breadcrumbs.ascx" TagPrefix="Destek" TagName="breadcrumbs" %>
+<%@ Register Src="~/Layout/Footer.ascx" TagPrefix="Destek" TagName="Footer" %>
+<%@ Register Src="~/Layout/Head.ascx" TagPrefix="Destek" TagName="Head" %> 
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>LifeSummary</title>
+		<meta name="description" content="overview &amp; stats" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<form id="form1" runat="server">
+            <Destek:Head runat="server" id="Head" />
+            
+            <Destek:Navbar runat="server" id="Navbar" />
+
+		<div class="main-container container-fluid">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+
+			 <Destek:Sidebar runat="server" id="Sidebar" />
+
+			<div class="main-content">
+              
+                	<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="icon-home home-icon"></i>
+							<a href="/Default">Anasayfa
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+                                </a>
+						</li>
+                          <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+                            
+                        </asp:ContentPlaceHolder>
+
+						
+					</ul><!--.breadcrumb-->
+
+					<div class="nav-search" id="nav-search">
+					</div><!--#nav-search-->
+				</div>
+
+                
+				<div class="page-content">
+					<!--/.page-header-->
+
+					<div class="row-fluid">
+						<div class="span12">
+							<!--PAGE CONTENT BEGINS-->
+
+							
+
+								<!--/span-->
+   
+                  
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+              
+            </asp:ContentPlaceHolder>
+							
+
+							<!--/row-->
+
+							<!--PAGE CONTENT ENDS-->
+						</div><!--/.span-->
+					</div><!--/.row-fluid-->
+				</div><!--/.page-content-->
+
+			 
+			</div><!--/.main-content-->
+		</div><!--/.main-container-->
+ 
+            <Destek:Footer runat="server" id="Footer" />
+            </form>
+	</body>
+</html>
+
+           
+            
+
+
+           
+            
+
+           
+            

@@ -1,0 +1,11 @@
+﻿input[type=checkbox], input[type=radio] {
+opacity: 1;
+position: relative;
+z-index: 12;
+/*width: 18px;
+height: 18px;*/
+}
+input[type=checkbox] + label , input[type=radio] + label 
+{
+    display:inline;
+}
