@@ -479,16 +479,18 @@
     <Content Include="Content\assets\font\fontawesome-webfont_aea8981c.ttf" />
     <Content Include="Content\assets\font\fontawesome-webfont_aea8981c.woff" />
     <None Include="Properties\PublishProfiles\LifeSummary.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="Request\Category.aspx" />
+    <Content Include="Request\Citys.aspx" />
+    <Content Include="Request\Companys.aspx" />
     <Content Include="Request\Manage.aspx" />
     <Content Include="Request\Person.aspx" />
-    <Content Include="Request\sehirler.aspx" />
-    <Content Include="Request\sirket.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -513,15 +515,13 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Scripts\_references.js" />
-    <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -634,6 +634,20 @@
     <Compile Include="Request\Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Request\Citys.aspx.cs">
+      <DependentUpon>Citys.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Request\Citys.aspx.designer.cs">
+      <DependentUpon>Citys.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Request\Companys.aspx.cs">
+      <DependentUpon>Companys.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Request\Companys.aspx.designer.cs">
+      <DependentUpon>Companys.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Request\Manage.aspx.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -647,20 +661,6 @@
     </Compile>
     <Compile Include="Request\Person.aspx.designer.cs">
       <DependentUpon>Person.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Request\sehirler.aspx.cs">
-      <DependentUpon>sehirler.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Request\sehirler.aspx.designer.cs">
-      <DependentUpon>sehirler.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Request\sirket.aspx.cs">
-      <DependentUpon>sirket.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Request\sirket.aspx.designer.cs">
-      <DependentUpon>sirket.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

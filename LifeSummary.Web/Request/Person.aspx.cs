@@ -11,27 +11,29 @@ namespace LifeSummary.Request
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            City();
-            Tille();
+            List();
         }
-        public void City()
+        public void List()
         {
-            int? id = null;
-            dlcity.DataSource = Db.CityListGet(id);
+            this.dlcity.DataSource = Manager.Instance.List<City>().Records;
             dlcity.DataBind();
-        }
-        public void Tille()
-        {
-            dlTitle.DataSource = Db.TitleListGet();
+            this.dlTitle.DataSource = Manager.Instance.List<Title>().Records;
             dlTitle.DataBind();
         }
-
-      
         public void personSave()
         {
-            Db.PersonSave(txtName.Text, txtSurname.Text, txtDescription.Text,dlTitle.SelectedItem.ToString() , Convert.ToInt32(dlcity.SelectedValue), itarih.SelectedDate, atarih.SelectedDate,Convert.ToInt32(dlTitle.SelectedValue));
-        }
+            PersonModel pr = new PersonModel();
 
+            pr.Name = txtName.Text;
+            pr.Surname = txtSurname.Text;
+            pr.PDescription = txtDescription.Text;
+            pr.Title = txtTitle.Text;
+            pr.FMCity = Convert.ToInt32(dlcity.SelectedValue);
+            pr.FMDate = itarih.SelectedDate;
+            pr.LMDate = atarih.SelectedDate;
+            Manager.Instance.SaveScalarE(pr, true);
+            List();
+        }
         protected void Save_Click(object sender, EventArgs e)
         {
             personSave();

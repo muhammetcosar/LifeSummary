@@ -42,6 +42,18 @@
                                    
                                      <asp:DropDownList ID="dlTitle" runat="server" DataTextField="TitleName" DataMember="TitleId" DataValueField="TitleId"></asp:DropDownList>
                                 </td>
+
+                            </tr>
+                            <tr>
+                                <td style="height: 26px">
+                                    <asp:Label ID="Label8" runat="server" Text="Başlık"></asp:Label>
+
+                                </td>
+                                <td style="height: 26px">
+                                   
+                                     <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>
+                                </td>
+
                             </tr>
                             <tr>
                                 <td>

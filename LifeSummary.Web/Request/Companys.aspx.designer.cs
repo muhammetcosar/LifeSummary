@@ -10,16 +10,25 @@
 namespace LifeSummary.Request {
     
     
-    public partial class Category {
+    public partial class sirket {
         
         /// <summary>
-        /// lbCategory control.
+        /// DlCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbCategory;
+        protected global::System.Web.UI.WebControls.DropDownList DlCity;
+        
+        /// <summary>
+        /// lbCompany control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbCompany;
         
         /// <summary>
         /// duzen control.
@@ -31,40 +40,40 @@ namespace LifeSummary.Request {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl duzen;
         
         /// <summary>
-        /// txtCategory control.
+        /// txtCompany control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+        protected global::System.Web.UI.WebControls.TextBox txtCompany;
         
         /// <summary>
-        /// btnDuzen control.
+        /// edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDuzen;
+        protected global::System.Web.UI.WebControls.Button edit;
         
         /// <summary>
-        /// btnSave control.
+        /// ekle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Button ekle;
         
         /// <summary>
-        /// btnYeni control.
+        /// Delete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnYeni;
+        protected global::System.Web.UI.WebControls.Button Delete;
         
         /// <summary>
         /// btnCancel control.

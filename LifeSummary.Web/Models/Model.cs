@@ -18,6 +18,8 @@ namespace LifeSummary
 
     [EntityCommand(EntityAction.Table, "ST_SP_CITY_SELECT")]
     [EntityCommand(EntityAction.Get, "ST_SP_CITY_SELECT")]
+    [EntityCommand(EntityAction.Save, "ST_SP_CITY_SAVE")]
+    [EntityCommand(EntityAction.Delete, "ST_SP_CITY_DELETE")]
     
     
     [PKEntity("CityId")]
@@ -52,23 +54,44 @@ namespace LifeSummary
         public string MESSAGE { get; set; }
 
     }
-    public class Title
+
+    [EntityCommand(EntityAction.Table, "ST_SP_TITLE_SELECT")]
+    [EntityCommand(EntityAction.Get, "ST_SP_TITLE_SELECT")]
+    [PKEntity("TitleId")]
+    public class Title :PKEntity<int>
     {
         public int? TitleId { get; set; }
         public string TitleName { get; set; }
 
     }
-    public class Category
-    {
 
+    [EntityCommand(EntityAction.Save, "ST_SP_CATEGORY_SAVE")]
+    [EntityCommand(EntityAction.Table, "ST_SP_CATEGORY_SELECT")]
+    [EntityCommand(EntityAction.Get, "ST_SP_CATEGORY_SELECT")]
+    [PKEntity("CategoryId")]
+    public class CategoryModel  :PKEntity<int>
+    {
         public int? CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int? ParentId { get; set; }
-
-
     }
-
-
+   
+    [EntityCommand(EntityAction.Save, "ST_SP_PERSON_SAVE")]
+    [PKEntity("PersonId")]
+    public class PersonModel :PKEntity<int>
+    {
+        public int? PersonId { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Title { get; set; }
+        public string PDescription { get; set; }
+        public bool Flevel { get; set; }
+        public DateTime FMDate { get; set; }
+        public int FMCity { get; set; }
+        public DateTime LMDate { get; set; }
+        public bool GenderF { get; set; }
+        public bool TitleId { get; set; }
+    }
 
 
 

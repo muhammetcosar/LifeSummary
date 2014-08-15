@@ -20,7 +20,7 @@
 
 					</li>
                      <li>
-						<asp:HyperLink runat="server" ID="lnkCity" NavigateUrl="~/Request/sehirler">
+						<asp:HyperLink runat="server" ID="lnkCity" NavigateUrl="~/Request/Citys">
 							<i class="icon-desktop"></i>
 							<span class="menu-text"> Şehirler </span>
 						</asp:HyperLink>
@@ -34,7 +34,7 @@
 
 					</li>
                      <li>
-						<asp:HyperLink runat="server" ID="lnkCompany" NavigateUrl="~/Request/sirket">
+						<asp:HyperLink runat="server" ID="lnkCompany" NavigateUrl="~/Request/Companys">
 							<i class="icon-desktop"></i>
 							<span class="menu-text"> Şirket </span>
 						</asp:HyperLink>

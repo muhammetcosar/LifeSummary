@@ -10,16 +10,25 @@
 namespace LifeSummary.Request {
     
     
-    public partial class Category {
+    public partial class sehirler {
         
         /// <summary>
-        /// lbCategory control.
+        /// Dlcountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbCategory;
+        protected global::System.Web.UI.WebControls.DropDownList Dlcountry;
+        
+        /// <summary>
+        /// lbCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbCity;
         
         /// <summary>
         /// duzen control.
@@ -31,48 +40,48 @@ namespace LifeSummary.Request {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl duzen;
         
         /// <summary>
-        /// txtCategory control.
+        /// txtCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+        protected global::System.Web.UI.WebControls.TextBox txtCity;
         
         /// <summary>
-        /// btnDuzen control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDuzen;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// btnSave control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// btnYeni control.
+        /// Button3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnYeni;
+        protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
-        /// btnCancel control.
+        /// HyperLink1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink btnCancel;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
     }
 }

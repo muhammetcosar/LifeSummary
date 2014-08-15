@@ -159,35 +159,7 @@ namespace LifeSummary
             }
             baglanti.Close();
         }
-        public static DataTable CategoryTableGet()
-        {
-
-            SqlConnection baglanti = Connection;
-            SqlDataAdapter adapter = new SqlDataAdapter("ST_SP_CATEGORY_SELECT ", baglanti);
-            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            DataTable tablo = new DataTable();
-            adapter.Fill(tablo);
-            return tablo;
-        }
-        public static Category CategoryParseGet(DataRow row)
-        {
-            Category c = new Category();
-            c.CategoryId = Convert.ToInt32(row["CategoryId"].ToString());
-            c.CategoryName = row["CategoryName"].ToString();
-          
-
-            return c;
-        }
-        public static List<Category> CategoryListGet()
-        {
-            var table = CategoryTableGet();
-            List<Category> list = new List<Category>();
-            foreach (DataRow row in table.Rows)
-            {
-                list.Add(CategoryParseGet(row));
-            }
-            return list;
-        }
+      
         public static void CategorySave(string CategoryName)
         {
             var con = Connection;

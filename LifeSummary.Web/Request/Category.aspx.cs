@@ -13,11 +13,14 @@ namespace LifeSummary.Request
         {
             if (!this.IsPostBack)
             {
-                var list = Manager.Instance.List<Country>();
-                this.lbCategory.DataSource = list.Records;
-                lbCategory.DataBind();
-               
+                List();
             }
+        }
+        public void List()
+        {
+            var list = Manager.Instance.List<CategoryModel>();
+            this.lbCategory.DataSource = list.Records;
+            lbCategory.DataBind();
         }
         protected void ekle_Click(object sender, EventArgs e)
         {
@@ -25,7 +28,19 @@ namespace LifeSummary.Request
         }
         public void CategorySave()
         {
-            Db.CategorySave(txtCategory.Text);
+            CategoryModel cq = new CategoryModel();
+            cq.CategoryName = txtCategory.Text;
+            var saved = Manager.Instance.SaveScalarE(cq, true);
+            List();
+
+        }
+        public void CategoryUpdate()
+        {
+            CategoryModel cq = new CategoryModel();
+            cq.CategoryId = Convert.ToInt32(lbCategory.SelectedValue);
+            cq.CategoryName = txtCategory.Text;
+            Manager.Instance.Save(cq, false, null, "ST_SP_CATEGORY_UPDATE");
+            List();
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -33,12 +48,20 @@ namespace LifeSummary.Request
         }
         protected void lbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-                duzen.Visible = true;
-                txtCategory.Text = lbCategory.SelectedValue;
+            duzen.Visible = true;
+            txtCategory.Text = lbCategory.SelectedItem.ToString();
+            btnDuzen.Visible = true;
+            btnSave.Visible = false;
         }
         protected void btnYeni_Click(object sender, EventArgs e)
         {
             txtCategory.Text = "";
+            btnSave.Visible = true;
+            btnDuzen.Visible = false;
+        }
+        protected void btnDuzen_Click(object sender, EventArgs e)
+        {
+            CategoryUpdate();
         }
     }
 }
