@@ -1,0 +1,20 @@
+ALTER PROCEDURE [dbo].[ST_SP_CITY_SAVE]
+	 @CityId INT,
+     @CountryId nvarchar(50), 
+     @CityName nvarchar(50),
+	 @ISNEW tinyint
+	 
+AS
+BEGIN
+	IF(@ISNEW=1)
+		BEGIN
+		 insert into City (CityName,CountryId)
+		 values (@CityName,@CountryId) 
+		END
+	ELSE
+		BEGIN
+				Update  City Set 
+				CityName=@CityName   
+				Where CityId=@CityId
+		END
+	END

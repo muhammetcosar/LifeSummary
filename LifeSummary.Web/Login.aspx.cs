@@ -25,11 +25,19 @@ namespace LifeSummary
             if (login.SUCCESS)
             {
                 SessionManager.Login = login;
-                if (login.ISADMIN)
-                    Response.Redirect("Request/Category.aspx");
-               
+                if (Request.Params["ReturnUrl"] != null)
+                {
+                    Response.Redirect(Request.Params["ReturnUrl"]);
+                }
                 else
-                    Response.Redirect("Default");
+                {
+                    if (login.ISADMIN)
+                        Response.Redirect("Request/Category.aspx");
+
+                    else
+                        Response.Redirect("Default");
+                }
+               
             }
             else
                 Response.Redirect("~/Login");

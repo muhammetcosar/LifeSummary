@@ -12,11 +12,12 @@
             <div class="widget-body">
                 <div class="widget-main">
                     <div class="control-group">
-                        <asp:DropDownList ID="Dlcountry" runat="server" DataTextField="COUNTRYNAME" AutoPostBack="True" DataValueField="COUNTRYID" OnSelectedIndexChanged="Dlcountry_SelectedIndexChanged"  >
+                        <asp:DropDownList ID="ddlCountry" runat="server" DataTextField="COUNTRYNAME" AutoPostBack="True" DataValueField="COUNTRYID" 
+                            OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"  >
                         </asp:DropDownList>
                     </div>
                     <div class="control-group">
-                        <asp:ListBox ID="lbCity" runat="server" DataTextField="CityName" Height="86px" Width="216px"  DataValueField="CityId" AutoPostBack="True" OnSelectedIndexChanged="lbCity_SelectedIndexChanged" ></asp:ListBox>
+                        <asp:ListBox ID="lbCity" runat="server" DataTextField="CityName" Height="400px" Width="240px"  DataValueField="CityId" AutoPostBack="True" OnSelectedIndexChanged="lbCity_SelectedIndexChanged" ></asp:ListBox>
                     </div>
                     <div class="form-actions">
                     </div>
@@ -38,11 +39,11 @@
                             <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
                         </div>
                     </div>
-                    <div class="form-actions">
-                         <asp:Button ID="Button1" class="btn btn-info" runat="server" Text="Düzenle" OnClick="edit_Click"   />
-                        <asp:Button ID="Button2" class="btn btn-info" runat="server" Text="Ekle" OnClick="ekle_Click"  />
-                        <asp:Button ID="Button3" class="btn btn-info" runat="server" Text="Sil" OnClick="Delete_Click"   />
-                        <asp:HyperLink ID="HyperLink1" class="btn btn-warn" runat="server"  Text="İptal" />
+                    <div class           ="form-actions">
+                         <asp:Button ID  ="btnNew" class="btn btn-info" runat="server" Text="Yeni" OnClick="btnNew_Click"    />
+                        <asp:Button ID  ="btnSave" class="btn btn-info" runat="server" Text="Kaydet" OnClick="btnSave_Click"   />
+                        <asp:Button ID   ="btnDelete" class="btn btn-info" runat="server" Text="Sil" OnClick="btnDelete_Click"   />
+                        <asp:HyperLink ID="lnkCancel" class="btn btn-warn" runat="server"  NavigateUrl="~/Default.aspx" Text="İptal" />
                     </div>
                 </div>
             </div>

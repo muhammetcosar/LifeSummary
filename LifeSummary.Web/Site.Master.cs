@@ -18,7 +18,7 @@ namespace LifeSummary
         protected void Page_Init(object sender, EventArgs e)
         {
             if (SessionManager.Login == null)
-                Response.Redirect("~/Login");
+                Response.Redirect("~/Login?ReturnUrl=" + this.Request.Url);
             // The code below helps to protect against XSRF attacks
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;

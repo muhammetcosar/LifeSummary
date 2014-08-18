@@ -4,77 +4,116 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Whe;
 namespace LifeSummary.Request
 {
     public partial class sehirler : System.Web.UI.Page
     {
+        public int? CityId
+        {
+            get
+            {
+                if (ViewState["CityId"] != null)
+                    return ViewState["CityId"].ToInt();
+                else
+                    return null;
+            }
+            set { ViewState["CityId"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack) 
+            if (!this.IsPostBack)
             {
-                var list = Manager.Instance.List<Country>();
-                this.Dlcountry.DataSource = list.Records;
-                Dlcountry.DataBind();
+                EntityFilter();
             }
-            
-        }
-        public void List()
-        {
-            var countrid =Convert.ToInt32( Dlcountry.SelectedValue);
-            var list = Manager.Instance.List<City>(new City() { CountryId = countrid });
-            this.lbCity.DataSource = list.Records;
-            lbCity.DataBind();
-        }
-        protected void Dlcountry_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            duzen.Visible = true;
-            txtCity.Text = " ";
-            List();
 
         }
-        public void CitySave()
+        public void EntityFilter()
         {
-            City rq = new City();
-            rq.CountryId = Convert.ToInt32(Dlcountry.SelectedValue);
-            rq.CityName = txtCity.Text;
-            var saved = Manager.Instance.SaveScalarE(rq, true);
-            List();
+            this.ddlCountry.LoadResult(Manager.Instance.List<Country>());
+            if (this.ddlCountry.Items.Count > 0)
+            {
+                this.ddlCountry.SelectedIndex = 0;
+                EntityList();
+            }
+
         }
-        public void CityUpdate()
+        public void EntityList()
         {
-            City rq = new City();
-            rq.CityId = Convert.ToInt32(lbCity.SelectedValue);
-            rq.CountryId = Convert.ToInt32(Dlcountry.SelectedValue);
-            rq.CityName = txtCity.Text;
-            Manager.Instance.Save(rq, false, null, "ST_SP_CITY_UPDATE");
-            List();
+            this.lbCity.LoadResult(Manager.Instance.List<City>(new City() { CountryId = ddlCountry.SelectedValue.ToInt() }));
+            EntityClear();
         }
-        public void sil()
+        public void EntityDetail()
         {
-            //City rq = new City();
-            //rq.CityId = Convert.ToInt32(lbCity.SelectedValue);
-            //Manager.Instance.Delete(rq, false, null, "ST_SP_CITY_DELETE");
-            //List();
-            
+            if (this.CityId.HasValue)
+            {
+                this.duzen.Visible = true;
+                this.txtCity.Text = this.lbCity.SelectedItem.Text;
+            }
+            else
+            {
+                txtCity.Text = " ";
+            }
         }
-        protected void ekle_Click(object sender, EventArgs e)
+        public void EntityDelete()
         {
-            CitySave();
+            if (this.CityId.HasValue)
+            {
+
+                var deleted = Manager.Instance.Delete<City>(new City() { CityId = this.CityId });
+                if (deleted.IsValid)
+                    EntityList(); 
+                else
+                    Response.Write(deleted.Message);
+            }
         }
-       
+        public void EntitySave()
+        {
+            bool isnew = true;
+            var city = new City();
+            city.CountryId = ddlCountry.SelectedValue.ToInt();
+            city.CityName = txtCity.Text;
+            if (this.CityId.HasValue)
+            {
+                city.CityId = this.CityId;
+                isnew = false;
+            }
+            var saved = Manager.Instance.Save(city, isnew);
+            if (saved.IsValid)
+                EntityList();
+            else
+                Response.Write(saved.Message);
+             
+        }
+        public void EntityClear()
+        {
+            this.lbCity.SelectedIndex = -1;
+            this.CityId = null;
+            this.txtCity.Text = "";
+        }
+
+        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EntityList();
+        }
         protected void lbCity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            duzen.Visible = true;
-            txtCity.Text = lbCity.SelectedItem.ToString();
+            this.CityId = this.lbCity.SelectedValue.ToInt();
+            EntityDetail();
         }
-        protected void Delete_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
-            sil();
+            EntitySave();
         }
-        protected void edit_Click(object sender, EventArgs e)
+        protected void btnDelete_Click(object sender, EventArgs e)
         {
-            CityUpdate();
+            EntityDelete();
+        }
+
+        protected void btnNew_Click(object sender, EventArgs e)
+        {
+            EntityClear();
         }
     }
 }
