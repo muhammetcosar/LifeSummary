@@ -4,76 +4,116 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Whe;
 namespace LifeSummary.Request
 {
     public partial class sirket : System.Web.UI.Page
     {
+        public int? CompanyId
+        {
+            get
+            {
+                if (ViewState["CompanyId"] != null)
+                    return ViewState["CompanyId"].ToInt();
+                else
+                    return null;
+            }
+            set { ViewState["CompanyId"] = value; }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                var list = Manager.Instance.List<City>();
-                this.DlCity.DataSource = list.Records;
-                DlCity.DataBind();
+                EntityFilter();
             }
         }
-        public void List()
+        public void EntityFilter()
         {
-            var city = Convert.ToInt32(DlCity.SelectedValue);
-            var list = Manager.Instance.List<Company>(new Company() { CityId = city });
-            this.lbCompany.DataSource = list.Records;
-            lbCompany.DataBind();
-        }
+            this.DlCity.LoadResult(Manager.Instance.List<City>());
+            if (this.DlCity.Items.Count > 0)
+            {
+                this.DlCity.SelectedIndex = 0;
+                EntityList();
+            }
 
-        public void CompanyUpdate()
-        {
-            Company rq = new Company();
-            rq.CompanyId= Convert.ToInt32(lbCompany.SelectedValue);
-            rq.CompanyTitle = txtCompany.Text;
-            Manager.Instance.Save(rq, false, null, "ST_SP_COMPANY_UPDATE");
-            List();
         }
+        public void EntityList()
+        {
+            this.lbCompany.LoadResult(Manager.Instance.List<Company>(new Company() { CityId = DlCity.SelectedValue.ToInt() }));
+            EntityClear();
+        }
+        public void EntityDetail()
+        {
+            var CompanyId = lbCompany.SelectedValue.ToInt();
+            if (CompanyId.HasValue)
+            {
+                this.duzen.Visible = true;
+                this.txtCompany.Text = this.lbCompany.SelectedItem.Text;
+            }
+            else
+            {
+                txtCompany.Text = " ";
+            }
+        }
+        public void EntityDelete()
+        {
+            var CompanyId = lbCompany.SelectedValue.ToInt();
+            if (CompanyId.HasValue)
+            {
 
-        protected void edit_Click(object sender, EventArgs e)
-        {
-            CompanyUpdate();
+                var deleted = Manager.Instance.Delete<Company>(new Company() { CompanyId = CompanyId });
+                if (deleted.IsValid)
+                    EntityList();
+                else
+                    Response.Write(deleted.Message);
+            }
         }
+        public void EntitySave()
+        {
+            bool isnew = true;
+            var Company = new Company();
+            Company.CityId = DlCity.SelectedValue.ToInt();
+            Company.CompanyTitle = txtCompany.Text;
+            var CompanyId = lbCompany.SelectedValue.ToInt();
+            if (CompanyId.HasValue)
+            {
+                Company.CompanyId = CompanyId;
+                isnew = false;
+            }
+            var saved = Manager.Instance.Save(Company, isnew);
+            if (saved.IsValid)
+                EntityList();
+            else
+                Response.Write(saved.Message);
+
+        }
+        public void EntityClear()
+        {
+            this.lbCompany.SelectedIndex = -1;
+            this.CompanyId = null;
+            this.txtCompany.Text = "";
+        }
+       
 
         protected void DlCity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            duzen.Visible = true;
-            List();
+            EntityList();
         }
-
-        protected void ekle_Click(object sender, EventArgs e)
-        {
-            Company rq = new Company();
-            rq.CityId =Convert.ToInt32( DlCity.SelectedValue);
-            rq.CompanyTitle = txtCompany.Text;
-            var saved = Manager.Instance.SaveScalarE(rq, true);
-            List();
-        }
-        protected void Delete_Click(object sender, EventArgs e)
-        {
-            sil();
-        }
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            EntitySave();
         }
-        public void sil()
-        {
-            int CompanyId = Convert.ToInt32(lbCompany.SelectedValue);
-            Db.CompanyDelete(CompanyId);
-        }
-
         protected void lbCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            duzen.Visible = true;
-            txtCompany.Text = lbCompany.SelectedItem.ToString();
+            EntityDetail();
+        }
+        protected void btnNew_Click(object sender, EventArgs e)
+        {
+            EntityClear();
+        }
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            EntityDelete();
         }
 
     }

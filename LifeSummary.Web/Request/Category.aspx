@@ -33,9 +33,9 @@
                         </div>
                     </div>
                     <div class="form-actions">
-                         <asp:Button ID="btnDuzen" class="btn btn-info" runat="server"  Text="Duzenle" OnClick="btnDuzen_Click"  />
-                        <asp:Button ID="btnSave" class="btn btn-info" runat="server"  Text="Kaydet" OnClick="btnSave_Click" Visible="false" />
-                         <asp:Button ID="btnYeni" class="btn btn-info" runat="server"  Text="Yeni" OnClick="btnYeni_Click"/>
+                        <asp:Button ID="btnSave" class="btn btn-info" runat="server"  Text="Kaydet" OnClick="btnSave_Click" />
+                         <asp:Button ID="btnNew" class="btn btn-info" runat="server"  Text="Yeni" OnClick="btnNew_Click"/>
+                         <asp:Button ID="btnDelete" class="btn btn-info" runat="server"  Text="Sil" OnClick="btnDelete_Click"/>
                         <asp:HyperLink ID="btnCancel" class="btn btn-warn" runat="server" OnClick="btnCancel_Click" Text="İptal" />
                     </div>
                 </div>

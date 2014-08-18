@@ -11,19 +11,18 @@ namespace LifeSummary.Request
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List();
+            EntityFilter();
         }
-        public void List()
+        public void EntityFilter()
         {
             this.dlcity.DataSource = Manager.Instance.List<City>().Records;
             dlcity.DataBind();
             this.dlTitle.DataSource = Manager.Instance.List<Title>().Records;
             dlTitle.DataBind();
         }
-        public void personSave()
+        public void EntitySave()
         {
             PersonModel pr = new PersonModel();
-
             pr.Name = txtName.Text;
             pr.Surname = txtSurname.Text;
             pr.PDescription = txtDescription.Text;
@@ -32,11 +31,11 @@ namespace LifeSummary.Request
             pr.FMDate = itarih.SelectedDate;
             pr.LMDate = atarih.SelectedDate;
             Manager.Instance.SaveScalarE(pr, true);
-            List();
+            EntityFilter();
         }
-        protected void Save_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
-            personSave();
+            EntitySave();
         }
     }
 }

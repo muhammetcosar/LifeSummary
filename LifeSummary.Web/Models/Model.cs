@@ -35,6 +35,7 @@ namespace LifeSummary
      [EntityCommand(EntityAction.Save, "ST_SP_COMPANY_SAVE")]
     [EntityCommand(EntityAction.Table, "ST_SP_COMPANY_SELECT")]
     [EntityCommand(EntityAction.Get, "ST_SP_COMPANY_SELECT")]
+    [EntityCommand(EntityAction.Delete, "ST_SP_COMPANY_DELETE")]
     [PKEntity("CompanyId")]
     public class Company : PKEntity<int>
     {
@@ -68,6 +69,7 @@ namespace LifeSummary
     [EntityCommand(EntityAction.Save, "ST_SP_CATEGORY_SAVE")]
     [EntityCommand(EntityAction.Table, "ST_SP_CATEGORY_SELECT")]
     [EntityCommand(EntityAction.Get, "ST_SP_CATEGORY_SELECT")]
+    [EntityCommand(EntityAction.Delete, "ST_SP_CATEGORY_DELETE")]
     [PKEntity("CategoryId")]
     public class CategoryModel  :PKEntity<int>
     {

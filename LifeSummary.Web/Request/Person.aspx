@@ -103,7 +103,7 @@
 
 
                     <div class="form-actions">
-                        <asp:Button ID="Save" class="btn btn-info" runat="server" Text="Gönder" OnClick="Save_Click" />
+                        <asp:Button ID="btnSave" class="btn btn-info" runat="server" Text="Kaydet" OnClick="btnSave_Click" />
                     </div>
                 </div>
             </div>
