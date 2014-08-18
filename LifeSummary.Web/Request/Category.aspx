@@ -10,7 +10,7 @@
             <div class="widget-body">
                 <div class="widget-main">
                     <div class="control-group">
-                        <asp:ListBox ID="lbCategory" runat="server" DataTextField="CategoryName" Height="86px" Width="216px" DataMember="CategoryName" OnSelectedIndexChanged="lbCategory_SelectedIndexChanged" AutoPostBack="True" DataValueField="CategoryId"></asp:ListBox>
+                        <asp:ListBox ID="lbCategory" runat="server" DataTextField="CategoryName" Height="86px" Width="362px" DataMember="CategoryName" OnSelectedIndexChanged="lbCategory_SelectedIndexChanged" AutoPostBack="True" DataValueField="CategoryId"></asp:ListBox>
                     </div>
                     <div class="form-actions">
                     </div>

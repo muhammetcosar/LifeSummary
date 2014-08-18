@@ -10,11 +10,12 @@
             <div class="widget-body">
                 <div class="widget-main">
                     <div class="control-group">
-                        <asp:DropDownList ID="DlCity" runat="server" DataTextField="CityName" AutoPostBack="True" DataValueField="CityId" OnSelectedIndexChanged="DlCity_SelectedIndexChanged" >
+                        <asp:DropDownList ID="DlCity" runat="server" DataTextField="CityName" AutoPostBack="True" DataValueField="CityId" OnSelectedIndexChanged="DlCity_SelectedIndexChanged"
+                             >
                         </asp:DropDownList>
                     </div>
                     <div class="control-group">
-                        <asp:ListBox ID="lbCompany" runat="server" DataTextField="CompanyTitle" Height="86px" Width="216px"  DataValueField="CompanyId" AutoPostBack="True" OnSelectedIndexChanged="lbCompany_SelectedIndexChanged"></asp:ListBox>
+                        <asp:ListBox ID="lbCompany" runat="server" DataTextField="CompanyTitle" Height="227px" Width="292px"  DataValueField="CompanyId" AutoPostBack="True" OnSelectedIndexChanged="lbCompany_SelectedIndexChanged"></asp:ListBox>
                     </div>
                     <div class="form-actions">
                     </div>

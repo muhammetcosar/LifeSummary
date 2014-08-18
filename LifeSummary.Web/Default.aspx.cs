@@ -11,7 +11,7 @@ namespace LifeSummary
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("~/Request/List");
+            Response.Redirect("~/Request/Category");
         }
     }
 }
