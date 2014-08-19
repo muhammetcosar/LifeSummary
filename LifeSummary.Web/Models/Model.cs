@@ -32,7 +32,7 @@ namespace LifeSummary
 
     }
 
-     [EntityCommand(EntityAction.Save, "ST_SP_COMPANY_SAVE")]
+    [EntityCommand(EntityAction.Save, "ST_SP_COMPANY_SAVE")]
     [EntityCommand(EntityAction.Table, "ST_SP_COMPANY_SELECT")]
     [EntityCommand(EntityAction.Get, "ST_SP_COMPANY_SELECT")]
     [EntityCommand(EntityAction.Delete, "ST_SP_COMPANY_DELETE")]
@@ -43,7 +43,11 @@ namespace LifeSummary
         public string CompanyTitle { get; set; }
         public int? CityId { get; set; }
     }
-    public class LoginResult
+    [EntityCommand(EntityAction.Table, "ST_SP_USER_LOGIN")]
+    [EntityCommand(EntityAction.Get, "ST_SP_USER_LOGIN")]
+
+    [PKEntity("USERID")]
+    public class LoginResult : PKEntity<int>
     {
         public int? REQCOUNT { get; set; }
         public int? USERID { get; set; }
